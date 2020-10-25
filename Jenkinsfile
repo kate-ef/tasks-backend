@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy Frontend'){
             steps{
                 dir('frontend'){
-                    git credentialsId: 'github_login', url: 'https://github.com/kate-ef/tasks-frontend.git'
+                    git credentialsId: 'github_login', url: 'https://github.com/kate-ef/tasks-frontend'
                     bat 'mvn clean package'
                     deploy adapters: [tomcat8(credentialsId: 'tomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
 
@@ -38,4 +38,3 @@ pipeline {
         }
     }
 }
-https://github.com/kate-ef/tasks-frontend.git

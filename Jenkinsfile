@@ -20,6 +20,7 @@ pipeline {
                     bat "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeplyBack -Dsonar.host.url=http://10.0.0.100:9000 -Dsonar.login=5c03adec957584f1986c497495189ea36dccb7ca -Dsonar.java.binaries=target"
                 }
             }
+        }
         stage('Deploy Backend'){
             steps{
                 deploy adapters: [tomcat8(credentialsId: 'tomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
